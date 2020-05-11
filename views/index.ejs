@@ -3,16 +3,143 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Humanity - The Game</title>
+    <link rel="stylesheet" href="/bulma/bulma.min.css" />
+    <style>
+        html,
+        body {
+            background-color: #2c3e50;
+            margin: 0;
+            height: 100%;
+        }
+        
+        body::-webkit-scrollbar {
+            width: 0 !important
+        }
+    </style>
 </head>
 
 <body>
-    <p>humanity the game</p>
-    <button id="humans">Humans +1</button>
-    <button id="aliens">Aliens +1</button>
+
+    <section class="hero is-danger is-bold is-medium">
+        <!-- Hero head: will stick at the top -->
+        <div class="hero-head">
+            <nav class="navbar">
+                <div class="container">
+                    <div class="navbar-brand">
+                        <a class="navbar-item">
+                            <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">
+                        </a>
+
+                        <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+                            <span></span>
+                        <span></span>
+                        <span></span>
+                        </span>
+                    </div>
+                    <div id="navbarMenuHeroA" class="navbar-menu">
+                        <div class="navbar-end">
+                            <a class="navbar-item">
+                                Home
+                            </a>
+                            <a class="navbar-item">
+                                Chat
+                            </a>
+                            <a class="navbar-item">
+                                Logout
+                            </a>
+                            <span class="navbar-item">
+                                <a class="button is-primary is-inverted">
+                                    <span class="icon">
+                                        <i class="fab fa-github"></i>
+                                    </span>
+                            <span>Check on GitHub</span>
+                            </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Hero content: will be in the middle -->
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title">
+                    Humanity
+                </h1>
+                <h2 class="subtitle">
+                    The game
+                </h2>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="container">
+        </br>
+        </br>
+    </div>
+
+    <section class="">
+        <div class="container">
+            <article class="message is-danger">
+                <div class="message-body">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a>                    efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+                </div>
+            </article>
+            <div class="columns is-centered">
+                <div class="column is-1"></div>
+
+                <div class="column has-text-centered">
+
+                    <progress class="progress is-primary" value="15" max="100">15%</progress>
+
+                    <button class="button is-primary is-medium" id="humans">Humans +1</button>
+                </div>
+                <div class="column is-3"></div>
+                <div class=" column has-text-centered">
+
+                    <progress class="progress is-warning" value="15" max="100">15%</progress>
+
+                    <button class="button is-warning is-medium " id="aliens">Aliens +1</button>
+                </div>
+                <div class="column is-1"></div>
+
+            </div>
+        </div>
+    </section>
 </body>
 <script src="/socket.io/socket.io.js"></script>
 <script src="/js/chat.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // Get all "navbar-burger" elements
+        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+        // Check if there are any navbar burgers
+        if ($navbarBurgers.length > 0) {
+
+            // Add a click event on each of them
+            $navbarBurgers.forEach(el => {
+                el.addEventListener('click', () => {
+
+                    // Get the target from the "data-target" attribute
+                    const target = el.dataset.target;
+                    const $target = document.getElementById(target);
+
+                    // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                    el.classList.toggle('is-active');
+                    $target.classList.toggle('is-active');
+
+                });
+            });
+        }
+
+    });
+</script>
+
 
 </html>

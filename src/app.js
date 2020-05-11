@@ -10,16 +10,26 @@ const io = socket(server);
 const port = process.env.PORT || 3000;
 const publicDirectoryPath = path.join(__dirname, "../public");
 const viewsPath = path.join(__dirname, "../views");
-var humansCount = 0;
-var aliensCount = 0;
+const bulmaPath = path.join(__dirname, '../node_modules/bulma/css/');
 
+// Express Setup
 app.use(express.static(publicDirectoryPath));
+app.use('/bulma', express.static(bulmaPath));
 app.set("view engine", "ejs");
 app.set("views", viewsPath);
 
 app.get("/", (req, res) => {
     res.render("index");
 });
+
+// Human and Alient vars for the game
+var humansCount = 0;
+var aliensCount = 0;
+
+
+
+
+//Socket Programming
 
 io.on("connection", (socket) => {
     console.log("New socket connection established!");
