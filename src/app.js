@@ -10,11 +10,12 @@ const io = socket(server);
 const port = process.env.PORT || 3000;
 const publicDirectoryPath = path.join(__dirname, "../public");
 const viewsPath = path.join(__dirname, "../views");
-const bulmaPath = path.join(__dirname, '../node_modules/bulma/css/');
+const bulmaPath = path.join(__dirname, "../node_modules/bulma/css/");
 
 // Express Setup
 app.use(express.static(publicDirectoryPath));
-app.use('/bulma', express.static(bulmaPath));
+app.use("/bulma", express.static(bulmaPath));
+
 app.set("view engine", "ejs");
 app.set("views", viewsPath);
 
@@ -26,26 +27,22 @@ app.get("/", (req, res) => {
 var humansCount = 0;
 var aliensCount = 0;
 
-
-
-
 //Socket Programming
 
 io.on("connection", (socket) => {
     console.log("New socket connection established!");
 
-    socket.emit('humansCountUpdated', humansCount)
-    socket.emit('aliensCountUpdated', aliensCount)
+    socket.emit("humansCountUpdated", humansCount);
+    socket.emit("aliensCountUpdated", aliensCount);
 
-    socket.on('humansIncrement', () => {
+    socket.on("humansIncrement", () => {
         humansCount++;
-        io.emit('humansCountUpdated', humansCount)
-    })
-    socket.on('aliensIncrement', () => {
+        io.emit("humansCountUpdated", humansCount);
+    });
+    socket.on("aliensIncrement", () => {
         aliensCount++;
-        io.emit('aliensCountUpdated', aliensCount)
-    })
-
+        io.emit("aliensCountUpdated", aliensCount);
+    });
 });
 
 server.listen(port, () => {
