@@ -13,3 +13,46 @@
         </div>
         <% }) %>
             <% } %>
+
+
+                <% if (successMsg != '') { %>
+                    <div class="field alert alert_warning" style="animation-delay: .5s">
+                        <div class="alert--icon">
+                            <i class="fas fas fa-check-circle"></i>
+                        </div>
+                        <div class="alert--content">
+                            <%= successMsg %>
+                        </div>
+                        <div class="alert--close">
+                            <i class="far fa-times-circle"></i>
+                        </div>
+                    </div>
+                    <% } %>
+
+                        <% if (errorMsg != '') { %>
+                            <div class="field alert alert_danger" style="animation-delay: .5s">
+                                <div class="alert--icon">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                </div>
+                                <div class="alert--content">
+                                    <%= errorMsg %>
+                                </div>
+                                <div class="alert--close">
+                                    <i class="far fa-times-circle"></i>
+                                </div>
+                            </div>
+                            <% } %>
+
+                                <% if (error != '') { %>
+                                    <div class="field alert alert_danger" style="animation-delay: .5s">
+                                        <div class="alert--icon">
+                                            <i class="fas fa-exclamation-circle"></i>
+                                        </div>
+                                        <div class="alert--content">
+                                            <%= error %>
+                                        </div>
+                                        <div class="alert--close">
+                                            <i class="far fa-times-circle"></i>
+                                        </div>
+                                    </div>
+                                    <% } %>

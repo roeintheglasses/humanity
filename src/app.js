@@ -4,7 +4,9 @@ const http = require("http");
 const socket = require("socket.io");
 const mongoose = require("mongoose");
 const expressLayouts = require('express-ejs-layouts');
-
+const flash = require('connect-flash');
+const session = require('express-session');
+const passport = require('passport')
 
 //Path and Env variables Setup
 const port = process.env.PORT || 3000;
@@ -13,6 +15,8 @@ const publicDirectoryPath = path.join(__dirname, "../public");
 const bulmaPath = path.join(__dirname, "../node_modules/bulma/css/");
 const alertsPath = path.join(__dirname, "../node_modules/alerts-css/assets/");
 
+//Passport Config
+require('../config/passport.js')(passport);
 
 // Setting up routes 
 const usersRoute = require('../routes/users');
@@ -29,6 +33,7 @@ var aliensCount = 0;
 const humanLimit = 1000;
 const alienLimit = 100;
 
+
 // Express & ejs Setup
 app.use(express.static(publicDirectoryPath));
 app.use(expressLayouts);
@@ -40,8 +45,30 @@ app.use(express.urlencoded({
     extended: false
 }));
 
+//Express Session 
+app.use(session({
+    secret: 'roewuzhere',
+    resave: true,
+    saveUninitialized: true,
+}))
+
+//Passport MiddleWare
+app.use(passport.initialize());
+app.use(passport.session());
+
+//Connect Flash
+app.use(flash());
+
+//Global vars
+app.use((req, res, next) => {
+    res.locals.successMsg = req.flash('successMsg');
+    res.locals.errorMsg = req.flash('errorMsg');
+    res.locals.error = req.flash('error');
+    next();
+});
+
 //Routes
-app.use('/', indexRoute);
+app.use('/game', indexRoute);
 app.use('/users', usersRoute);
 app.use("/bulma", express.static(bulmaPath));
 app.use("/alerts", express.static(alertsPath));

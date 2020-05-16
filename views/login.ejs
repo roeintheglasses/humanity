@@ -32,7 +32,7 @@
                                     <span class="icon">
                                         <i class="fab fa-github"></i>
                                     </span>
-                            <span>Fork Me</span>
+                            <span>Star Me</span>
                             </a>
                             </span>
                         </div>
@@ -57,65 +57,67 @@
                         <h2 class="subtitle">
                             The game
                         </h2>
-                        <form action="/users/login" method="POST" class="box">
-                            <div class="field">
-                                <label for="" class="label">Email</label>
-                                <div class="control has-icons-left">
-                                    <input type="email" placeholder="e.g. email@gmail.com" class="input" required />
-                                    <span class="icon is-small is-left">
+                        <%- include ( 'partials/messages') %>
+                            <form action="/users/login" method="POST" class="box">
+                                <div class="field">
+                                    <label for="email" class="label">Email</label>
+                                    <div class="control has-icons-left">
+                                        <input id="email" name="email" type="email" placeholder="e.g. email@gmail.com" class="input" required />
+                                        <span class="icon is-small is-left">
                                         <i class="fa fa-envelope"></i>
                                     </span>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label for="" class="label">Password</label>
-                                <div class="control has-icons-left">
-                                    <input type="password" placeholder="*******" class="input" required />
-                                    <span class="icon is-small is-left">
-                                        <i class="fa fa-lock"></i>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="field is-grouped is-grouped-centered">
-                                <div class="control">
-                                    <button class="button is-danger">Login</button>
-                                </div>
-                                <div class="control">
-                                    <a class="button is-danger" href="/users/register">
-                                        <span>Register</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <fieldset disabled>
-                                <div class="field is-grouped is-grouped-centered">
-                                    <div class="control">
-                                        <button class="button is-success">
-                                            Login with Google
-                                        </button>
-                                    </div>
-                                    <div class="control">
-                                        <button class="button is-link">
-                                            Login with Facebook
-                                        </button>
-                                    </div>
-                                    <div class="control">
-                                        <button class="button is-dark">
-                                            Login with GitHub
-                                        </button>
                                     </div>
                                 </div>
                                 <div class="field">
-                                    <div class="control has-text-centered">
-                                        <p class="is-danger"> Third party authentication and login will be supported in future
-                                        </p>
+                                    <label for="password" class="label">Password</label>
+                                    <div class="control has-icons-left">
+                                        <input id="password" name="password" type="password" placeholder="*******" class="input" required />
+                                        <span class="icon is-small is-left">
+                                        <i class="fa fa-lock"></i>
+                                    </span>
                                     </div>
                                 </div>
-                            </fieldset>
-
-                        </form>
+                                <div class="field is-grouped is-grouped-centered">
+                                    <div class="control">
+                                        <button type="submit" class="button is-danger">Login</button>
+                                    </div>
+                                    <div class="control">
+                                        <a class="button is-danger" href="/users/register">
+                                            <span>Register</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <fieldset disabled>
+                                    <br>
+                                    <div class="field ">
+                                        <div class="columns">
+                                            <div class="column is-one-third">
+                                                <button class="button is-success">
+                                                Login with Google
+                                            </button>
+                                            </div>
+                                            <div class="column is-one-third">
+                                                <button class="button is-link">
+                                                Login with Facebook
+                                            </button>
+                                            </div>
+                                            <div class="column is-one-third">
+                                                <button class="button is-dark">
+                                                Login with GitHub
+                                            </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="control has-text-centered">
+                                            <p class="is-danger"> Third party authentication and login will be supported in future
+                                            </p>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
                     </div>
                     <div class="column is-1"></div>
-
                 </div>
                 <!--/ Main Page -->
             </div>
