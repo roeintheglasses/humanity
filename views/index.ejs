@@ -30,30 +30,32 @@
                             </a>
 
                             <span class="navbar-burger burger" data-target="navbarMenuHeroA">
-                  <span></span>
+                                <span></span>
                             <span></span>
                             <span></span>
                             </span>
                         </div>
 
-                        <div id="navbarMenuHeroA" class="navbar-menu">
+                        <div id="navbarMenuHeroA" class="navbar-menu has-text-centered">
                             <div class="navbar-end">
                                 <a class="navbar-item">
-                    Home
-                  </a>
+                                    Home
+                                </a>
                                 <a class="navbar-item">
-                    Chat
-                  </a>
+                                    Chat
+                                </a>
                                 <a class="navbar-item">
-                    Logout
-                  </a>
+                                    About
+                                </a>
+                                <a class="navbar-item">
+                                    Logout
+                                </a>
                                 <span class="navbar-item">
-                    <a
-                      class="button is-danger is-outlined is-inverted is-fullwidth"
-                    >
-                      <span class="icon">
-                        <i class="fab fa-github"></i>
-                      </span>
+                                    <a class="button is-danger is-outlined is-inverted is-fullwidth"
+                                        href="https://github.com/roeintheglasses/humanity">
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
                                 <span>Fork Me</span>
                                 </a>
                                 </span>
@@ -68,13 +70,13 @@
                     <!-- Main Page -->
 
                     <div class="columns">
-                        <div class="columm is-mobile">
+                        <div class="column is-4">
                             <img src="/icons/humanity-guy/humanity-guy.png" width="512" height="512" alt="humanity-guy" />
                         </div>
 
-                        <div class="column is-2 is-mobile"></div>
+                        <div class="column is-1"></div>
 
-                        <div class="columm is-mobile">
+                        <div class="column">
                             <h1 class="title">
                                 Humanity
                             </h1>
@@ -97,15 +99,15 @@
                                         <progress id="humans-progress-bar" class="progress is-dark" value="0" max="100"></progress>
 
                                         <button class="button is-dark is-medium" id="humansButton">
-                        Humans +1
-                      </button>
+                                            Humans +1
+                                        </button>
                                     </div>
                                     <div class="column is-3"></div>
                                     <div class="column has-text-centered">
                                         <progress id="aliens-progress-bar" class="progress is-warning" value="0" max="100"></progress>
                                         <button class="button is-warning is-medium" id="aliensButton">
-                        Aliens +1
-                      </button>
+                                            Aliens +1
+                                        </button>
                                     </div>
                                     <div class="column is-1"></div>
                                 </div>
@@ -152,12 +154,14 @@
                     <div class="chat">
                         <div class="columns">
                             <div class="column is-half">
-                                <button class="button is-primary is-light is-medium" id="humansChatButton">Join the humans chat Here
+                                <button class="button is-primary is-light is-medium" id="humansChatButton">Join the
+                                    humans chat Here
                                 </button>
                             </div>
                             <div class="column is-half">
-                                <button class="button is-warning is-light is-medium" id="aliensChatButton">Join the Aliens chat Here
-                                    </button>
+                                <button class="button is-warning is-light is-medium" id="aliensChatButton">Join the
+                                    Aliens chat Here
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -176,6 +180,6 @@
 </body>
 <script src="/socket.io/socket.io.js"></script>
 <script src="/js/main.js"></script>
-<script src="/js/chat.js"></script>
+<script src="/js/game.js"></script>
 
 </html>

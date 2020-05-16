@@ -2,10 +2,10 @@
     "name": "humanity",
     "version": "1.0.0",
     "description": "",
-    "main": "index.js",
+    "main": "app.js",
     "scripts": {
         "start": "node src/app.js",
-        "dev": "nodemon src/app.js"
+        "dev": "env-cmd -f ./config/dev.env nodemon src/app.js"
     },
     "repository": {
         "type": "git",
@@ -18,12 +18,21 @@
     },
     "homepage": "https://github.com/roeintheglasses/humanity#readme",
     "dependencies": {
+        "alerts-css": "^1.0.2",
+        "bcryptjs": "^2.4.3",
         "bulma": "^0.8.2",
+        "connect-flash": "^0.1.1",
         "ejs": "^3.1.2",
         "express": "^4.17.1",
+        "express-ejs-layouts": "^2.5.0",
+        "express-session": "^1.17.1",
+        "mongoose": "^5.9.14",
+        "passport": "^0.4.1",
+        "passport-local": "^1.0.0",
         "socket.io": "^2.3.0"
     },
     "devDependencies": {
+        "env-cmd": "^10.1.0",
         "nodemon": "^2.0.3"
     }
 }

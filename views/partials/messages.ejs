@@ -1,0 +1,15 @@
+<% if (typeof(errors)!="undefined") { %>
+    <% errors.forEach(error => { %>
+        <div class="field alert alert_danger" style="animation-delay: .5s">
+            <div class="alert--icon">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <div class="alert--content">
+                <%= error.msg %>
+            </div>
+            <div class="alert--close">
+                <i class="far fa-times-circle"></i>
+            </div>
+        </div>
+        <% }) %>
+            <% } %>

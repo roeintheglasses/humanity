@@ -2,33 +2,60 @@ const express = require("express");
 const path = require("path");
 const http = require("http");
 const socket = require("socket.io");
+const mongoose = require("mongoose");
+const expressLayouts = require('express-ejs-layouts');
 
+
+//Path and Env variables Setup
+const port = process.env.PORT || 3000;
+const dbUrl = process.env.DB_URL;
+const publicDirectoryPath = path.join(__dirname, "../public");
+const bulmaPath = path.join(__dirname, "../node_modules/bulma/css/");
+const alertsPath = path.join(__dirname, "../node_modules/alerts-css/assets/");
+
+
+// Setting up routes 
+const usersRoute = require('../routes/users');
+const indexRoute = require('../routes/index');
+
+//Express and Socket.io consts
 const app = express();
 const server = http.createServer(app);
 const io = socket(server);
 
-const port = process.env.PORT || 3000;
-const publicDirectoryPath = path.join(__dirname, "../public");
-const viewsPath = path.join(__dirname, "../views");
-const bulmaPath = path.join(__dirname, "../node_modules/bulma/css/");
-
-// Express Setup
-app.use(express.static(publicDirectoryPath));
-app.use("/bulma", express.static(bulmaPath));
-
-app.set("view engine", "ejs");
-app.set("views", viewsPath);
-
-app.get("/", (req, res) => {
-    res.render("index");
-});
-
 // Human and Alient vars for the game
 var humansCount = 0;
 var aliensCount = 0;
+const humanLimit = 1000;
+const alienLimit = 100;
+
+// Express & ejs Setup
+app.use(express.static(publicDirectoryPath));
+app.use(expressLayouts);
+app.set("view engine", "ejs");
+
+
+//Bodyparser
+app.use(express.urlencoded({
+    extended: false
+}));
+
+//Routes
+app.use('/', indexRoute);
+app.use('/users', usersRoute);
+app.use("/bulma", express.static(bulmaPath));
+app.use("/alerts", express.static(alertsPath));
+
+
+
+//Mongoose Setup
+mongoose.connect(dbUrl, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
+
 
 //Socket Programming
-
 io.on("connection", (socket) => {
     console.log("New socket connection established!");
 
@@ -45,6 +72,6 @@ io.on("connection", (socket) => {
     });
 });
 
-server.listen(port, () => {
-    console.log("Server running at port " + port);
-});
+
+//Server start
+server.listen(port, console.log("Server running at port " + port));
