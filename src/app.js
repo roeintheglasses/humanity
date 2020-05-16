@@ -68,6 +68,9 @@ app.use((req, res, next) => {
 });
 
 //Routes
+app.get("/", (req, res) => {
+    res.redirect("/users/login");
+});
 app.use('/game', indexRoute);
 app.use('/users', usersRoute);
 app.use("/bulma", express.static(bulmaPath));
